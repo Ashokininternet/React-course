@@ -1,0 +1,3 @@
+.tmp.drive*
+.node_modules/
+.vscode/

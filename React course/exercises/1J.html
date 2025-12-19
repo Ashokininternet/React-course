@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1j</title>
+</head>
+<body>
+    <div class="not">
+
+    </div>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script type="text/babel">
+        const time = dayjs().format('HH:mm:ss');
+        const anytime = (
+            <div>
+                <p>Today is {time}</p>    
+            </div>
+        );
+        
+        const not = document.querySelector('.not');
+        const root = ReactDOM.createRoot(not);
+        root.render(anytime);
+
+        setInterval(()=>{
+            const time = dayjs().format('HH:mm:ss');
+            const anytime = (
+                <div>
+                    <p>Today is {time}</p>    
+                </div>
+            );
+            root.render(anytime);
+        },1000);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4e</title>
+    <style>
+        input{
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+        }
+        button{
+            padding: 10px;
+            border-radius: 5px;
+            background-color: rgb(0, 182, 243);
+            border-style: none;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="js-container"></div>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+    function App(){
+        const [isShowing, isHidden] = React.useState(false);
+        function ShoworHide(){
+            if(isShowing){
+                isHidden(false);
+            }else{
+                isHidden(true);
+            }
+        }
+        return(
+            <div>
+                <p>Hello, welcome to my site</p>
+                <div>
+                    <input type="text" placeholder="Emial" />    
+                </div>
+                <div>
+                    <input type={isShowing ? 'type' : 'password'} placeholder="Password" />
+                    <button onClick={ShoworHide}>{isShowing ? 'Hide': 'Show'}</button>
+                </div>
+                
+                
+                <button>Login</button>
+                <button>Sign Up</button>
+            </div>
+        );
+    }
+    const cont = document.querySelector('.js-container');
+    ReactDOM.createRoot(cont).render(<App />);
+    </script>
+</body>
+</html>

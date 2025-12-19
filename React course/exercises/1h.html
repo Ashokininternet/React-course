@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1h</title>
+</head>
+<body>
+    <div class="not">
+
+    </div>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script type="text/babel">
+        const day = dayjs().format('MMMM D');
+        const tday = (
+            <div>
+                <p>Todaay is {day}</p>    
+            </div>
+        )
+        
+        const not = document.querySelector('.not');
+        ReactDOM.createRoot(not).render(tday);
+
+    </script>
+</body>
+</html>

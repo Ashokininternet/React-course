@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>1c</title>
+</head>
+<body>
+    <div class="cont"></div>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        const div = (
+            <div>
+                <p>Cotton Socks</p>
+                <p>Price $10</p>
+                <button>Buy now 👍</button>    
+            </div>
+        );
+        const air = document.querySelector('.cont');
+        ReactDOM.createRoot(air).render(div);
+    </script>
+</body>
+</html>

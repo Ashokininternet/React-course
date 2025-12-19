@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>3h</title>
+</head>
+
+<body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        function App(){
+            const [inputText, saveInputText] = React.useState('');
+
+            function updateText(event){
+                saveInputText(event.target.value);
+            };
+            function resetText(){
+                saveInputText('');
+            };
+            function exampleText(){
+                saveInputText("It's me Ashok")
+            }
+            return(
+                <>
+                    <input onChange={updateText} />
+                    <p>Hello {inputText}</p>
+                    <button onClick={resetText}>Reset</button>
+                    <button onClick={exampleText}>Example</button>
+                </>
+            );
+        };
+        const cont = document.querySelector('.js-container');
+        ReactDOM.createRoot(cont).render(<App />);
+    </script>
+</body>
+
+</html>
