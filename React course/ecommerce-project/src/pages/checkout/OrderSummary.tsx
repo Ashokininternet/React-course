@@ -2,8 +2,20 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import { formatMoney } from '../../utils/money';
 import { DeliveryOptions } from './DeliveryOptions';
+import type { CartItem } from '../../types';
 
-export function OrderSummary({ cart, deliveryOptions, loadCart }) {
+type OrderSummaryProps = {
+  deliveryOptions: {
+    id: string;
+    deliveryDays: number;
+    priceCents: number;
+    estimatedDeliveryTimeMs: number;
+  }[];
+  loadCart: () => Promise<void>;
+  cart: CartItem[];
+}
+
+export function OrderSummary({ cart, deliveryOptions, loadCart }: OrderSummaryProps) {
   return (
     <div className="order-summary">
       {deliveryOptions.length > 0 && cart.map((cartItem) => {
@@ -20,7 +32,7 @@ export function OrderSummary({ cart, deliveryOptions, loadCart }) {
         return (
           <div key={cartItem.productId} className="cart-item-container">
             <div className="delivery-date">
-              Delivery date: {dayjs(selectedDeliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
+              Delivery date: {dayjs(selectedDeliveryOption?.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
             </div>
 
             <div className="cart-item-details-grid">
@@ -48,7 +60,7 @@ export function OrderSummary({ cart, deliveryOptions, loadCart }) {
                 </div>
               </div>
 
-              <DeliveryOptions cartItem={cartItem} deliveryOptions={deliveryOptions} loadCart={loadCart} />
+              <DeliveryOptions cartItem={cartItem} cart={cart} deliveryOptions={deliveryOptions} loadCart={loadCart} />
             </div>
           </div>
         );

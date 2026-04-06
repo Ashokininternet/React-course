@@ -2,10 +2,15 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { OrderSummary } from './OrderSummary';
 import { PaymentSummary } from './PaymentSummary';
+import type { CartItem } from '../../types';
 import './checkout-header.css';
 import './CheckoutPage.css';
 
-export function CheckoutPage({ cart, loadCart }) {
+type CheckoutProp = {
+  cart: CartItem[];
+  loadCart: ()=> Promise<void>;
+}
+export function CheckoutPage({ cart, loadCart }: CheckoutProp) {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
   const [paymentSummary, setPaymentSummary] = useState(null);
 

@@ -2,7 +2,22 @@ import axios from 'axios';
 import { useState } from 'react';
 import { formatMoney } from '../../utils/money';
 
-export function Product({ product, loadCart }) {
+type Productprops = {
+  loadCart: ()=> Promise<void>;
+  product: {
+    id: string;
+    image: string;
+    name: string;
+    rating: {
+      stars: number
+      count: number;
+    };
+    priceCents: number;
+    keywords: string[];
+  };
+}
+
+export function Product({ product, loadCart }: Productprops) {
   const [quantity, setQuantity] = useState(1);
 
   const addToCart = async () => {
@@ -13,7 +28,7 @@ export function Product({ product, loadCart }) {
     await loadCart();
   };
 
-  const selectQuantity = (event) => {
+  const selectQuantity = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const quantitySelected = Number(event.target.value);
     setQuantity(quantitySelected);
   };
