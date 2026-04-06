@@ -60,7 +60,7 @@ export function OrderSummary({ cart, deliveryOptions, loadCart }: OrderSummaryPr
                 </div>
               </div>
 
-              <DeliveryOptions cart={cart} cartItem={cartItem} deliveryOptions={deliveryOptions} loadCart={loadCart} />
+              <DeliveryOptions cartItem={cartItem} cart={cart} deliveryOptions={deliveryOptions} loadCart={loadCart} />
             </div>
           </div>
         );

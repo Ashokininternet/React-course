@@ -4,9 +4,13 @@ import { useState, useEffect, Fragment } from 'react';
 import { Header } from '../../components/Header';
 import { formatMoney } from '../../utils/money';
 import './OrdersPage.css';
+import type { CartItem, Order } from '../../types';
 
-export function OrdersPage({ cart }) {
-  const [orders, setOrders] = useState([]);
+type OrdersPageprops = {
+  cart: CartItem[];
+}
+export function OrdersPage({ cart }: OrdersPageprops) {
+  const [orders, setOrders] = useState<Order[]>([]);
 
   useEffect(() => {
     axios.get('/api/orders?expand=products')
